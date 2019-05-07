@@ -1,15 +1,19 @@
 require 'ruby2d'
 require_relative 'board'
 
-set title: 'Game of life'
+puts "Size of the grid:"
+size = gets.chomp.to_i
+
+set title: 'Game of Life'
 set background: 'aqua'
+set width: 25*size+size, height: 25*size + size
 
 tick = 0
-@board = Board.new
+@board = Board.new(size)
 @board.random_seed!
 
 update do
-  if tick % 80 == 0
+  if tick % 60 == 0
     @board.next!
 
     @board.matrix.each do |cell|
@@ -19,7 +23,7 @@ update do
       Square.new(x: x, y: y, size: 25, color: color)
     end
   end
-tick += 1
+  tick += 1
 end
 
 show
