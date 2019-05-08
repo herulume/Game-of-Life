@@ -6,7 +6,7 @@ size = gets.chomp.to_i
 
 set title: 'Game of Life'
 set background: 'aqua'
-set width: 25*size+size, height: 25*size + size
+set width: 25*size + size, height: 25*size + size
 
 tick = 0
 @board = Board.new(size)

@@ -64,7 +64,7 @@ RSpec.describe Cell do
       expect(c.neighbour?(Cell.new(x-1, y+1))).to eq(true)
       expect(c.neighbour?(Cell.new(x-1, y))).to eq(true)
       expect(c.neighbour?(Cell.new(x-1, y-1))).to eq(true)
-
+      expect(c.neighbour?(Cell.new(x, y))).to eq(false)
       expect(c.neighbour?(Cell.new(x-offset, y+offset))).to eq(false)
     end
   end
