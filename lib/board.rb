@@ -31,20 +31,25 @@ class Board
   end
 
   def next!
+    dead = []
+    alive = []
+
     @matrix.each do |cell|
       neighbours = neighbour_cells(cell).count
-
       if cell.alive? && neighbours < 2
-        cell.kill!
+        dead << cell
       end
 
       if cell.alive? && neighbours > 3
-        cell.kill!
+        dead << cell
       end
 
       if (not cell.alive?) && neighbours == 3
-        cell.revive!
+        alive << cell
       end
     end
+
+    dead.each { |cell| cell.kill! }
+    alive.each { |cell| cell.revive! }
   end
 end
